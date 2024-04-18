@@ -18,7 +18,7 @@ if(MSVC)
 endif()
 
 
-add_library(Spisok SHARED "Spisok.cpp")
+add_library(Spisok SHARED "TreeSearch.cpp")
 target_include_directories(Spisok PUBLIC "include")
 
 # Подключаем googletest
@@ -30,3 +30,6 @@ FetchContent_MakeAvailable(googletest)
 # Объявляем тестs
 add_executable(tests "Tests.cc")
 target_link_libraries(tests Spisok GTest::gtest_main)
+
+add_executable(cycle "cycle.cc")
+target_link_libraries(cycle Spisok GTest::gtest_main)

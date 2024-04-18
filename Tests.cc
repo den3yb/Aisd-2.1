@@ -1,148 +1,56 @@
-#include "Spisok.cpp"
+#include "TreeSearch.cpp"
 #include <gtest/gtest.h>
 #include <iostream>
+#include <fstream>
+#include <time.h>
+#include <fstream>
 
 
 using namespace std;
 using namespace spisok;
 
-TEST(Tests1, twolist1) {
-	twolist<int> list1;
-	list1.push_end(7);
-	list1.push_end(2);
-	list1.push_end(5);
-	list1.push_head(4);
-	cout << list1 << "\n";
-	list1.pop_end();
-	cout << list1 << "\n";
-	list1.pop_head();
-	cout << list1<<"\n";
-	twolist<int> list2(list1);
-	cout << list2 << "\n";
-	cout << list2[0] << "\n";
-	EXPECT_TRUE(true);
+TEST(treetests, construct_inseart) {
+	int* array = new int[12] {9, 12, 8, 4, 5, 6, 7, 3, 1, 10, 11, 2};
+	tree s(array, 12);
+	s.inseart(44);
+	s.print();
 }
 
-TEST(Tests2, twolist2) {
-	twolist<int> list1;
-	list1.push_end(1);
-	list1.push_end(2);
-	list1.push_end(3);
-	list1.push_end(4);
-	list1.push_head(1);
-	twolist<int> list2;
-	list2.push_end(6);
-	list2.push_end(7);
-	list2.push_end(8);
-	list2.push_end(9);
-	cout << list1 << "\n";
-	cout << list2 << "\n";
-	list1.push_end(&list2);
-	cout << list1 << "\n";
-	EXPECT_TRUE(true);
+TEST(treetests, construct_contains) {
+	int* array = new int[12] {9, 12, 8, 4, 5, 6, 7, 3, 1, 10, 11, 2};
+	tree s(array, 12);
+	cout << s.contains(4);
+	cout << s.contains(44);
+	
 }
 
-TEST(Tests3, twolist3) {
-	twolist<int> list1;
-	list1.push_end(1);
-	list1.push_end(2);
-	list1.push_end(3);
-	list1.push_end(4);
-	twolist<int> list2;
-	list2.push_end(6);
-	list2.push_end(7);
-	list2.push_end(8);
-	list2.push_end(9);
-	cout << list1 << "\n";
-	cout << list2 << "\n";
-	list1.push_head(&list2);
-	cout << list1 << "\n";
-	EXPECT_TRUE(true);
+TEST(treetests, construct_erase) {
+	int* array = new int[12] {9, 12, 8, 4, 5, 6, 7, 3, 1, 10, 11, 2};
+	tree s(array, 12);
+	s.erase(4);
+	s.print();
 }
 
-TEST(Tests4, sum1) {
-	twolist<int> list1;
-	list1.push_end(1);
-	list1.push_end(2);
-	list1.push_end(3);
-	list1.push_end(4);
-	twolist<int> list2;
-	list2.push_end(6);
-	list2.push_end(7);
-	list2.push_end(8);
-	list2.push_end(9);
-	cout << list1 << "\n";
-	cout << list2 << "\n";
-	twolist<int> list_s = sum_num(&list1, &list2);
-	cout << list_s;
-	EXPECT_TRUE(true);
+TEST(treetests, copy) {
+	int* array = new int[12] {9, 12, 8, 4, 5, 6, 7, 3, 1, 10, 11, 2};
+	tree s(array, 12);
+	tree t(s);
+	t.print();
 }
 
-TEST(Tests5, sum2) {
-	twolist<int> list1;
-	list1.push_end(1);
-	list1.push_end(2);
-	list1.push_end(3);
-	twolist<int> list2;
-	list2.push_end(6);
-	list2.push_end(7);
-	list2.push_end(8);
-	list2.push_end(9);
-	cout << list1 << "\n";
-	cout << list2 << "\n";
-	twolist<int> list_s = sum_num(&list1, &list2);
-	cout << list_s;
-	EXPECT_TRUE(true);
+TEST(treetests, GetNoCopies) {
+	std::vector<int>a = std::vector<int>();
+	int* array = new int[11] {1, 2, 3, 5, 4, 1, 2, 7, 9, 9, 3};
+	for (int i = 0; i < 11; i++)
+		a.push_back(array[i]);
+	std::vector<int> b = no_replys(a);
+	for (int i = 0; i < b.size(); i++)
+		cout << b[i] << " ";
 }
 
 
-TEST(Tests6, sum3) {
-	twolist<int> list1;
-	list1.push_end(1);
-	list1.push_end(2);
-	list1.push_end(3);
-	twolist<int> list2;
-	list2.push_end(6);
-	list2.push_end(7);
-	list2.push_end(8);
-	list2.push_end(9);
-	cout << list2 << "\n";
-	cout << list1 << "\n";
-	twolist<int> list_s = sum_num(&list2, &list1);
-	cout << list_s;
-	EXPECT_TRUE(true);
-}
-
-TEST(Tests7, mul) {
-	twolist<int> list1;
-	list1.push_end(8);
-	list1.push_end(9);
-	list1.push_end(4);
-	twolist<int> list2;
-	list2.push_end(4);
-	list2.push_end(5);
-	list2.push_end(6);
-	list2.push_end(8);
-	cout << list2 << "\n";
-	cout << list1 << "\n";
-	twolist<int> list_m = mul_num(&list1, &list2);
-	cout << list_m;
-	EXPECT_TRUE(true);
-}
-
-TEST(Tests8, sum4) {
-	twolist<int> list1;
-	list1.push_head(9);
-	list1.push_head(9);
-	twolist<int> list2;
-	list2.push_head(1);
-	twolist<int> list_s = sum_num(&list1, &list2);
-	cout << list_s;
-	EXPECT_TRUE(true);
-}
-
-TEST(Tests9, êôòâ) {
-	twolist<int> a(5, 1, 9);
-	cout << a;
-	EXPECT_TRUE(true);
+TEST(treetests, yyyy) {
+	ofstream fout;
+	fout.open("C:\\Proganiy\\Aisd 4\\Aisd-laba1\\tree_out.txt");
+	fout << "hello";
 }
