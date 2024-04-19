@@ -75,7 +75,8 @@ namespace spisok {
 		bool helping_contains(int key, node* top) {
 			if (top == nullptr) return false;
 			if (top->_val == key) return true;
-			return (helping_contains(key, top->_left) || helping_contains(key, top->_right));
+			if (top->_val > key) return helping_contains(key, top->_left);
+			if (top->_val < key) return helping_contains(key, top->_right);
 		}
 
 		bool erase(int val) { return helping_erase(val, _top); }

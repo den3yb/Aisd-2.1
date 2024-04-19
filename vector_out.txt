@@ -1,0 +1,15 @@
+For 1000
+Creating time: 0.000234
+Searching time: 9e-06
+Add & delete time: 8e-06
+
+For 10000
+Creating time: 0.001864
+Searching time: 5e-05
+Add & delete time: 3.1e-05
+
+For 100000
+Creating time: 0.014457
+Searching time: 0.000201
+Add & delete time: 0.000231
+

@@ -1,0 +1,15 @@
+helloFor 1000
+Creating time: 0.000643
+Searching time: 3.6e-05
+Add & delete time: 4e-06
+
+For 10000
+Creating time: 0.008011
+Searching time: 0.000491
+Add & delete time: 7e-06
+
+For 100000
+Creating time: 0.13537
+Searching time: 0.00346
+Add & delete time: 1.7e-05
+
